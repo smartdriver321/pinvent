@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const dotenv = require('dotenv').config()
 
+const userRoute = require('./routes/userRoute')
+
 const app = express()
 const PORT = 5000
 
@@ -21,6 +23,9 @@ mongoose
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+// Middleware for routes
+app.use('/api/users', userRoute)
 
 // Routes
 app.get('/', (req, res) => {
