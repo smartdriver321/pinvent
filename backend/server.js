@@ -4,6 +4,8 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 
+import userRoute from './routes/userRoute.js'
+
 dotenv.config()
 
 const app = express()
@@ -18,6 +20,9 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
 	res.send('Home Page')
 })
+
+// Routes Middleware
+app.use('/api/users', userRoute)
 
 // Connect to DB and start server
 mongoose
