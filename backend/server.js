@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 
 import userRoute from './routes/userRoute.js'
+import { errorHandler } from './middleware/errorMiddleware.js'
 
 dotenv.config()
 
@@ -20,6 +21,9 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
 	res.send('Home Page')
 })
+
+// Error middleware
+app.use(errorHandler)
 
 // Routes Middleware
 app.use('/api/users', userRoute)
