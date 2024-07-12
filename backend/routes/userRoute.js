@@ -10,6 +10,7 @@ import {
 	updateUser,
 	changePassword,
 	forgotPassword,
+	resetPassword,
 } from '../controllers/userController.js'
 
 const router = express.Router()
@@ -22,5 +23,6 @@ router.get('/loggedin', loginStatus)
 router.patch('/updateuser', protect, updateUser)
 router.patch('/changepassword', protect, changePassword)
 router.post('/forgotpassword', forgotPassword)
+router.put('/resetpassword/:resetToken', resetPassword)
 
 export default router
