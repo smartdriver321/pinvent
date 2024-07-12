@@ -66,3 +66,8 @@ export const registerUser = asyncHandler(async (req, res) => {
 		throw new Error('Invalid user data')
 	}
 })
+
+// Login User
+export const loginUser = asyncHandler(async (req, res) => {
+	res.send('Login User')
+})
