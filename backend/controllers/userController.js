@@ -1,6 +1,12 @@
 import asyncHandler from 'express-async-handler'
+import jwt from 'jsonwebtoken'
 
 import { User } from '../models/userModel.js'
+
+// Generate Token
+const generateToken = (id) => {
+	return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1d' })
+}
 
 // Register User
 export const registerUser = asyncHandler(async (req, res) => {
@@ -32,6 +38,9 @@ export const registerUser = asyncHandler(async (req, res) => {
 		password,
 	})
 
+	// Generate token
+	const token = generateToken(user._id)
+
 	if (user) {
 		const { _id, name, email, photo, phone, bio } = user
 		res.status(201).json({
@@ -41,6 +50,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 			photo,
 			phone,
 			bio,
+			token,
 		})
 	} else {
 		res.status(400)
