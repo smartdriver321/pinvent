@@ -8,6 +8,7 @@ import {
 	getUser,
 	loginStatus,
 	updateUser,
+	changePassword,
 } from '../controllers/userController.js'
 
 const router = express.Router()
@@ -18,5 +19,6 @@ router.get('/logout', logoutUser)
 router.get('/getuser', protect, getUser)
 router.get('/loggedin', loginStatus)
 router.patch('/updateuser', protect, updateUser)
+router.patch('/changepassword', protect, changePassword)
 
 export default router
