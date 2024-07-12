@@ -7,6 +7,7 @@ import {
 	logoutUser,
 	getUser,
 	loginStatus,
+	updateUser,
 } from '../controllers/userController.js'
 
 const router = express.Router()
@@ -16,5 +17,6 @@ router.post('/login', loginUser)
 router.get('/logout', logoutUser)
 router.get('/getuser', protect, getUser)
 router.get('/loggedin', loginStatus)
+router.patch('/updateuser', protect, updateUser)
 
 export default router
